@@ -1,25 +1,21 @@
 let cardsAvailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; 
 let noOfCardsDealt = 0; 
-let cardsNowAvailable;
 let newCardDrawn; 
 
 function drawCard() {
     newCardDrawn = (Math.ceil(Math.random() * cardsAvailable.length));
     console.log(newCardDrawn);
+    let index= cardsAvailable.indexOf(newCardDrawn);
+    cardsAvailable.splice(index, 1);
     return newCardDrawn;
 }
 
 let begin = document.getElementById('start');
 begin.onclick = drawCard;
 
-function removeCardFromDeck() {
-    let index = cardsAvailable.indexOf(newCardDrawn);
-    cardsAvailable.splice(index, 1);
-}
 //I was trying to splice this using (newCardDrawn- 1) however this was changing the index each time. Therefore find index first
 
 let previousCard = drawCard();
-
 
 function addOneToCardsDealt() {
     noOfCardsDealt += 1; 
@@ -40,8 +36,6 @@ function chooseHigher() {
    
     newCardDrawn = drawCard();
     
-    
-
     if (newCardDrawn > previousCard) {
         alert("Go again");
         previousCard = newCardDrawn; 
@@ -51,14 +45,12 @@ function chooseHigher() {
         console.log(`number of cards dealt is ${noOfCardsDealt}`);
         checkCardNumber();
 
-        removeCardFromDeck();
         console.log(cardsAvailable);
 
      } else {
          alert("You Lose!");
     }
 
-    //need to add card to number of cards dealt
 }
 
 let low = document.getElementById('lower');
@@ -68,7 +60,6 @@ function chooseLower() {
     
     newCardDrawn = drawCard();
     
-
     if (newCardDrawn < previousCard) {
         alert("Go again");
         previousCard = newCardDrawn;
@@ -77,14 +68,10 @@ function chooseLower() {
         console.log(`number of cards dealt is ${noOfCardsDealt}`);
         checkCardNumber();
 
-        removeCardFromDeck();
         console.log(cardsAvailable);
 
     } else {
         alert("You Lose!");
     }
 }
-
-
-
 
