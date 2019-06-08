@@ -24,10 +24,8 @@ function startGame() { //initialising
 
 function checkCardNumber() {
     if (noOfCardsDealt === 6) {
-        alert ('Congratulations you win!');
-        } else {
-            alert ('play again');
-        }        
+        alert ('Congratulations you win!', location.reload());
+        }     
 }
 
 function chooseHigher() {
